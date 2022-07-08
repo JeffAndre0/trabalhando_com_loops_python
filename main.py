@@ -1,7 +1,3 @@
-from lib2to3.pgen2.token import RPAR
-from threading import currentThread
-
-
 curso = {
     "nome": "Programando em python",
     "conteudos": [
@@ -76,8 +72,8 @@ conteudo_while = []
 
 # 1 - Preencher o conjunto conteudo_while com uma lista de dicionarios dos conteudos conforme o exemplo:
 print("\n","*"*15,"Exercicios com While","*"*15)
-
 print("\n","*"*15,"Exercicio1","*"*15)
+
 # Exemplo: [{nome: "Conceitos básicos da linguagem", active: True}]
 count = 0
 while count < len(curso["conteudos"]):
@@ -96,30 +92,38 @@ print("\n","*"*15,"Exercicios com listas","*"*15)
 
 # 1 - preenche a coleção curso_for com os dados do curso e acrecenta o atributo active com valor true
 print("\n","*"*15,"Exercicio1","*"*15)
-curso_for = [{"nome":x, "active":True } for x in curso.items()]
-print(curso_for)
+for item in curso.items():
+    curso_for[item[0]] = item[1]
+curso_for["active"] = True
 
+# curso_for = [{"nome":x, "active":True } for x in curso.items()]
+print(curso_for)
 # 2 - preenche a coleção alunos_for com os nomes dos alunos.
 print("\n","*"*15,"Exercicio2","*"*15)
-alunos_for = [x for x in curso["alunos"]]
+for aluno in curso["alunos"]:
+    alunos_for.append(aluno)
+    
+# alunos_for = [x for x in curso["alunos"]]
 print(alunos_for)
 
 # 3 - preenche a coleção conteudos_for com os dados dos conteudos.
 print("\n","*"*15,"Exercicio3","*"*15)
-conteudos_for = [x for x in curso["conteudos"]]
+for x in curso["conteudos"]:
+    conteudos_for.append(x)
 print(conteudos_for)
 
 # 4 - preenche a coleção instrutor_for com os dados dos instrutor e acrecentar os meios de contatos
 print("\n","*"*15,"Exercicio4","*"*15)
-instrutor_for = {x for x in curso["instrutor"].items()}
+for x in curso["instrutor"].items():
+    instrutor_for[x[0]] = x[1]
+instrutor_for["GitHub"] = "https://github.com/jcp-elbulidur"
 print(instrutor_for)
-
 # 5 - faça uma busca na coleção curso_for e imprime apenas os dados do instrutor
 print("\n","*"*15,"Exercicio5","*"*15)
-for lists in curso_for:
-    for tuples in lists.values():
-        if (tuples != True and "instrutor" in tuples):
-                print(tuples)
+
+for lists in curso_for.items():
+    if "instrutor" in lists:
+        print(lists)
                 
 # 6 - faça uma busca na coleção alunos e imprime o aluno com index 5
 print("\n","*"*15,"Exercicio6","*"*15)
